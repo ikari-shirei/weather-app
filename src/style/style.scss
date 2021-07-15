@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 $light-blue: #1e6091;
 $dark-blue: #184e77;
 $white: #ffffff;
+
+$default-font-family: 'Roboto', sans-serif;
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: $light-blue;
+  font-family: $default-font-family;
+  color: $white;
 }
 
 header {
@@ -17,12 +23,13 @@ header {
   #searchContainer {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: center;
     input {
       color: $white;
       background-color: $light-blue;
       border: 2px solid $white;
       border-right: 0 !important;
+      border-left: 0 !important;
       padding: 10px;
     }
     #searchButton {
@@ -31,8 +38,8 @@ header {
       padding: 10px;
       border: 2px solid $white;
       border-left: 0 !important;
+      border-right: 0 !important;
       &:hover {
-        background-color: $dark-blue;
         color: $white;
         cursor: pointer;
       }
@@ -40,9 +47,208 @@ header {
     input,
     #searchButton {
       opacity: 0.4;
-      &:hover,
-      &:focus {
+      &:hover {
         opacity: 1;
+        outline: none;
+      }
+    }
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  #locationDateTimeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    #location {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      margin: 8px;
+    }
+    #date {
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+  }
+  #weatherConditionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #weatherConditionIcon {
+      width: 100px;
+      height: 100px;
+      transition: 0.5s;
+      &:hover {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    #weatherCondition {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    #temp {
+      font-size: 32px;
+    }
+  }
+  #weatherAttributesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 16px 32px 16px;
+    max-width: 380px;
+    .weather-attribute {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .attribute-value {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .attribute-name {
+      font-size: 14px;
+    }
+  }
+
+  #sevenDaysContainer {
+    display: flex;
+    font-size: 14px;
+    padding: 0 12px;
+    border-radius: 15px;
+    width: 300px;
+    overflow-x: scroll;
+    .seven-days {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      margin: 8px 16px;
+      padding: 16px 12px;
+      &:first-child {
+        background-color: $white;
+        color: $light-blue;
+        font-weight: bold;
+      }
+    }
+    .seven-days-icon {
+      margin: 4px 0;
+      width: 50px;
+      height: 50px;
+      background-color: $light-blue !important;
+      border-radius: 15px;
+    }
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  #sevenDaysContainer {
+    width: 500px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #sevenDaysContainer {
+    width: auto !important;
+    overflow-x: visible !important ;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  header {
+    margin-left: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    #searchContainer {
+      margin-left: 64px;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+  main {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    #locationDateTimeContainer {
+      margin-left: 64px;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row: 1;
+      align-items: flex-start;
+      justify-content: flex-start;
+      #location {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 48px;
+        margin: 8px 8px 8px 0;
+      }
+      #date {
+        font-size: 16px;
+      }
+    }
+
+    #weatherConditionContainer {
+      grid-column-start: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      align-items: center;
+      margin-left: 32px;
+      margin-top: 0;
+      #weatherCondition {
+        font-size: 24px;
+      }
+      #temp {
+        font-size: 32px;
+      }
+    }
+
+    #weatherAttributesContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: flex-start;
+      align-items: flex-start;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row: 2;
+      width: 350px !important;
+      margin: 32px 0 32px 64px-16px;
+      .weather-attribute {
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-self: flex-start;
+        .attribute-value {
+          flex-wrap: nowrap;
+          font-size: 24px;
+        }
+        .attribute-name {
+          font-size: 14px;
+        }
+      }
+    }
+    #sevenDaysContainer {
+      margin-left: 64px - 28px;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row: 3;
+      justify-self: center;
+      align-self: center;
+      .seven-days {
+        padding: 28px 20px;
+        font-size: 16px;
       }
     }
   }
