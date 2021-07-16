@@ -15,6 +15,43 @@ body {
   color: $white;
 }
 
+#loader {
+  font-size: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: 16px solid $white;
+  border-top: 16px solid $dark-blue;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 header {
   display: flex;
   align-items: center;
@@ -24,6 +61,7 @@ header {
     display: flex;
     width: 100%;
     justify-content: center;
+
     input {
       color: $white;
       background-color: $light-blue;
@@ -31,7 +69,12 @@ header {
       border-right: 0 !important;
       border-left: 0 !important;
       padding: 10px;
+      &:focus {
+        opacity: 1 !important;
+        outline: 0;
+      }
     }
+
     #searchButton {
       color: $white;
       background-color: $light-blue;
@@ -44,6 +87,7 @@ header {
         cursor: pointer;
       }
     }
+
     input,
     #searchButton {
       opacity: 0.4;
@@ -62,11 +106,12 @@ main {
   flex-direction: column;
   #locationDateTimeContainer {
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     #location {
-      display: flex;
+      display: block;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
@@ -74,10 +119,12 @@ main {
       margin: 8px;
     }
     #date {
+      display: block;
       margin-bottom: 4px;
       font-size: 14px;
     }
   }
+
   #weatherConditionContainer {
     display: flex;
     flex-direction: column;
@@ -86,11 +133,11 @@ main {
     #weatherConditionIcon {
       width: 100px;
       height: 100px;
-      transition: 0.5s;
+      /*   transition: 0.5s;
       &:hover {
         width: 120px;
         height: 120px;
-      }
+      } */
     }
     #weatherCondition {
       font-size: 16px;
@@ -100,6 +147,7 @@ main {
       font-size: 32px;
     }
   }
+
   #weatherAttributesContainer {
     display: flex;
     flex-wrap: wrap;
@@ -148,7 +196,7 @@ main {
       margin: 4px 0;
       width: 50px;
       height: 50px;
-      background-color: $light-blue !important;
+      background-color: $light-blue;
       border-radius: 15px;
     }
   }
@@ -172,17 +220,21 @@ main {
     margin-left: 0;
     justify-content: flex-start;
     align-items: flex-start;
+
     #searchContainer {
       margin-left: 64px;
       justify-content: flex-start;
       align-items: flex-start;
     }
   }
+
   main {
     display: grid;
     grid-template-columns: auto auto auto auto;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-top: 32px;
+
     #locationDateTimeContainer {
       margin-left: 64px;
       grid-column-start: 1;
@@ -190,6 +242,8 @@ main {
       grid-row: 1;
       align-items: flex-start;
       justify-content: flex-start;
+      max-width: 350px;
+      text-align: start;
       #location {
         flex-direction: row;
         flex-wrap: wrap;
@@ -203,13 +257,18 @@ main {
 
     #weatherConditionContainer {
       grid-column-start: 2;
-      grid-row-start: 2;
+      grid-row-start: 1;
       grid-row-end: 3;
       align-items: center;
       margin-left: 32px;
-      margin-top: 0;
+      margin-top: 16px;
       #weatherCondition {
+        margin-top: -16px;
         font-size: 24px;
+      }
+      #weatherConditionIcon {
+        width: 200px;
+        height: 200px;
       }
       #temp {
         font-size: 32px;
@@ -239,6 +298,7 @@ main {
         }
       }
     }
+
     #sevenDaysContainer {
       margin-left: 64px - 28px;
       grid-column-start: 1;
