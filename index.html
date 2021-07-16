@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="icon" href="/src/icon/open-weather-sun.png" />
+  </head>
+  <body>
+    <header>
+      <div id="searchContainer">
+        <input
+          type="text"
+          id="cityName"
+          name="cityName"
+          placeholder="City name"
+          required
+        />
+        <button id="searchButton" type="button">Search</button>
+      </div>
+    </header>
+    <main>
+      <div id="locationDateTimeContainer">
+        <div id="location">
+          <span id="city"></span>
+          <span id="country"></span>
+        </div>
+        <div id="date"></div>
+      </div>
+      <div id="weatherConditionContainer">
+        <img id="weatherConditionIcon" />
+        <div id="weatherCondition"></div>
+        <div id="temp"></div>
+      </div>
+      <div id="weatherAttributesContainer">
+        <div class="weather-attribute">
+          <div class="attribute-value" id="wind"></div>
+          <div class="attribute-name">Wind</div>
+        </div>
+        <div class="weather-attribute">
+          <div class="attribute-value" id="humidity"></div>
+          <div class="attribute-name">Humidity</div>
+        </div>
+        <div class="weather-attribute">
+          <div class="attribute-value" id="visibility"></div>
+          <div class="attribute-name">Visibility</div>
+        </div>
+        <div class="weather-attribute">
+          <div class="attribute-value" id="sunrise"></div>
+          <div class="attribute-name">Sunrise</div>
+        </div>
+        <div class="weather-attribute">
+          <div class="attribute-value" id="sunset"></div>
+          <div class="attribute-name">Sunset</div>
+        </div>
+      </div>
+      <div id="sevenDaysContainer"></div>
+    </main>
+    <div id="loader"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
