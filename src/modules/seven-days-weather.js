@@ -1,4 +1,6 @@
 /* eslint-disable space-before-function-paren */
+
+// sevenDaysContainer
 function sevenDaysWeather(dayName, icon, temp) {
   const sevenDaysContainer = document.querySelector('#sevenDaysContainer');
 
